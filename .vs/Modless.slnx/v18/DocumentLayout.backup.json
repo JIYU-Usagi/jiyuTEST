@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|c:\\users\\0215o\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\modless\\flooratt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|solutionrelative:flooratt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|c:\\users\\0215o\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\modless\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|c:\\users\\0215o\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\modless\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|c:\\users\\0215o\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\modless\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|solutionrelative:mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|c:\\users\\0215o\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\modless\\util.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|solutionrelative:util.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15EE9FA9-C054-72F4-4434-D85F4A3E9DA6}|Modless.csproj|c:\\users\\0215o\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\modless\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +42,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\MainForm.Designer.cs",
+              "RelativeToolTip": "MainForm.Designer.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAEwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-02T07:28:30.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Util.cs",
+              "DocumentMoniker": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\Util.cs",
+              "RelativeDocumentMoniker": "Util.cs",
+              "ToolTip": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\Util.cs",
+              "RelativeToolTip": "Util.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwEUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-02T06:02:14.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FloorATT.cs",
+              "DocumentMoniker": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\FloorATT.cs",
+              "RelativeDocumentMoniker": "FloorATT.cs",
+              "ToolTip": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\FloorATT.cs",
+              "RelativeToolTip": "FloorATT.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwBIAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-02T05:27:26.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainForm.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
@@ -42,26 +93,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
               "ToolTip": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\MainForm.cs",
               "RelativeToolTip": "MainForm.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAYwJ0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-29T02:38:20.467Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Command.cs",
               "DocumentMoniker": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\Command.cs",
               "RelativeDocumentMoniker": "Command.cs",
               "ToolTip": "C:\\Users\\0215o\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Modless\\Command.cs",
               "RelativeToolTip": "Command.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAIwCIAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-28T10:40:07.101Z",
               "EditorCaption": ""

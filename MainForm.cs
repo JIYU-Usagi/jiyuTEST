@@ -17,6 +17,7 @@ using System.Windows.Forms;
 // WinForms 와 Revit API 에 같은 이름이 있는 클래스는 어느 쪽을 쓸지 지정합니다.
 using TaskDialog = Autodesk.Revit.UI.TaskDialog;
 using System.Linq;
+using Autodesk.Revit.DB.Analysis;
 
 namespace Modless
 {
@@ -72,6 +73,26 @@ namespace Modless
         // 번호표에 적어 둔 할 일 (내 차례가 되면 실행됨)
         private Action<UIDocument, Document> _action;
         //
+        public static string m_FloorTypeName = "";
+        public static string m_WallTypeName = "";
+        public static string m_CeilingTypeName = "";
+        public static string m_ColTypeName = "";
+
+        public static string m_FloorType = "";
+        public static string m_WallHeight = "";
+
+
+
+
+
+
+        //바닥 벽 천장 생성기용 전역변수
+        public static bool m_isFloor = false;
+        public static bool m_isWall = false;
+        public static bool m_isCeiling = false;
+
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -84,13 +105,76 @@ namespace Modless
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        //슬라브 생성 버튼 
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    RunRevit((uidoc, doc) =>
+        //    {
+        //        List<Floor> fl = FloorATT.GetFloorData(doc, uidoc, m_FloorType);
+
+        //        foreach (floor f in fl)
+        //        {
+        //            Util.CreateFloor(doc, f.m_LCurveLopps, f.m_FloorType, f.m_Level, f.m_FloorTypeTHK);
+        //        }
+
+        //    });
+        //}
+
+        //벽 생성 버튼
+        private void button2_Click(object sender, EventArgs e)
         {
             RunRevit((uidoc, doc) =>
             {
-                // 할 일
-                TaskDialog.Show("Modless", "버튼 클릭! 내 차례!");
+                //레빗 파일에서 객체의 면을 선택해서 커브 정보들을 가져온다
+                Reference r = uidoc.Selection.PickObject(ObjectType.Face);
+                Element e = doc.GetElement(r);
+                GeometryObject go = e.GetGeometryObjectFromReference(r);
+                Face face = go as Face;
+                EdgeArrayArray eaa = face.EdgeLoops;
+
+                //추출한 커브들을 cls(리스트)에 담아준다
+                List<CurveLoop> cls = new List<CurveLoop>();
+                foreach (EdgeArray item in eaa)
+                {
+                    CurveLoop cl = new CurveLoop();
+                    foreach (Edge item1 in item)
+                    {
+                        cl.Append(item1.AsCurve());
+                    }
+                    cls.Add(cl);
+                }
+
+
+                //리스트에서 첫번째 커브를 기준으로 생성한다
+                //Util에서 작성한 함수 쓰기
+                CurveLoop firstloop = cls[0];
+                WallType wt = Util.GetWallRtpeByName(doc, m_WallTypeName);
+
+                //타입을 찾지못햇을때
+                if (wt == null)
+                {
+                    TaskDialog.Show("경고", "타입을 찾지못햇습니다");
+                    return;
+                }
+
+                //벽 생성시작
+                //매개변수 셋팅
+                //Util에서 만든 함수 불러옴
+                double t = Util.GetWallTHK(wt);
+                //안쪽으로 벽의 두께/2 만큼 옵셋 시켜준다
+                CurveLoop offloop = CurveLoop.CreateViaOffset(firstloop, -t / 2, XYZ.BasisZ);
+                Level level = doc.ActiveView.GenLevel;
+                //전역매개변수 문자를 더블값으로 바꿔준다
+                double WallHeight = Convert.ToDouble(m_WallHeight);
+
+                foreach (Curve curve in offloop)
+                {
+                    //Util의 함수 가져오기
+                    Util.CreateWall(doc, curve, wt, level, WallHeight, false);
+                }
+
             });
+
         }
 
 
@@ -153,5 +237,93 @@ namespace Modless
             base.OnFormClosed(e);
         }
 
+
+
+        //메인폼을 로드 했을 때 레빗에 있는 정보들을 모두 가져옴
+        //벽, 천장, 바닥, 기둥 정보를 가져오는 것을 설정
+        //각 카테고리 별로 생성한 콤보박스에 카테고리 별로 가져온 데이터를 넣어준다
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            RunRevit((uidoc, doc) =>
+            {
+
+                //슬라브정보
+                FilteredElementCollector colfloor = new FilteredElementCollector(doc);
+                colfloor.OfCategory(BuiltInCategory.OST_Floors);
+                colfloor.OfClass(typeof(FloorType));
+
+                foreach (FloorType item in colfloor)
+                {
+                    string name = item.Name;
+                    comboBox1.Items.Add(name);
+                }
+
+                //벽 정보
+                FilteredElementCollector colwalls = new FilteredElementCollector(doc);
+                colwalls.OfCategory(BuiltInCategory.OST_Walls);
+                colwalls.OfClass(typeof(WallType));
+
+                foreach (WallType item in colwalls)
+                {
+                    string name = item.Name;
+                    comboBox2.Items.Add(name);
+                }
+
+                //기둥 정보
+                FilteredElementCollector colCl = new FilteredElementCollector(doc);
+                colCl.OfCategory(BuiltInCategory.OST_StructuralColumns);
+                colCl.OfClass(typeof(FamilySymbol));
+
+                foreach (FamilySymbol item in colCl)
+                {
+                    string name = item.Name;
+                    comboBox4.Items.Add(name);
+                }
+
+                //천장 정보
+                FilteredElementCollector colceil = new FilteredElementCollector(doc);
+                colceil.OfCategory(BuiltInCategory.OST_Ceilings);
+                colceil.OfClass(typeof(CeilingType));
+
+                foreach (CeilingType item in colceil)
+                {
+                    string name = item.Name;
+                    comboBox3.Items.Add(name);
+                }
+            });
+        }
+
+
+        //슬라브 콤보박스
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_FloorTypeName = comboBox1.SelectedItem.ToString();
+        }
+
+
+        //기둥 콤보박스
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_ColTypeName = comboBox4.SelectedItem.ToString();
+        }
+
+        //벽 콤보박스
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_WallTypeName = comboBox2.SelectedItem.ToString();
+        }
+
+
+        //천장 콤보박스
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_CeilingTypeName = comboBox3.SelectedItem.ToString();
+        }
+
+        //천장 생성 버튼
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
